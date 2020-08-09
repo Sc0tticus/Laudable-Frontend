@@ -4,7 +4,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 // import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 
 const LikeTrack = ({ classes }) => {
-  return <div className={classes.iconButton}>LikeTrack</div>;
+  return <div >LikeTrack</div>;
 };
 
 const styles = theme => ({
