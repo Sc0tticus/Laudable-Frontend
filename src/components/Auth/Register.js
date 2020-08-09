@@ -17,7 +17,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 // import VerifiedUserTwoTone from "@material-ui/icons/VerifiedUserTwoTone";
 
 const Register = ({ classes }) => {
-  return <div>Register</div>;
+  return <div >Register</div>;
 };
 
 const styles = theme => ({
