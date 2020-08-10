@@ -23,7 +23,11 @@ const Register = ({ classes }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-
+const handleSubmit = async (event, createUser) => {
+  event.preventDefault()
+  const res = await createUser()
+  console.log({ res });
+};
 
   return (
     <div className={classes.root}>
@@ -35,10 +39,12 @@ const Register = ({ classes }) => {
           Register
         </Typography>
 
-        <Mutation mutation={REGISTER_MUTATION}>
-          {() => {
+        <Mutation mutation={REGISTER_MUTATION}
+        variables = {{ username, email, password }}
+        >
+          {(createUser, { loading, error }) => {
             return (
-              <form className={classes.form}>
+              <form onSubmit={event => handleSubmit(event, createUser)} className={classes.form}>
                 <FormControl margin="normal" required fullWidth>
                   <InputLabel htmlFor="username">Username</InputLabel>
                   <Input id="username" onChange={event => setUsername(event.target.value)}/>
