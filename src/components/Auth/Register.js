@@ -60,6 +60,8 @@ const Register = ({ classes }) => {
   )
 };
 
+
+
 const styles = theme => ({
   root: {
     width: "auto",
