@@ -24,7 +24,6 @@ function Transition(props){
   return <Slide direction="up" {...props}/>
 }
 
-
 const Register = ({ classes, setNewUser }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
