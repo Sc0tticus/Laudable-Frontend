@@ -19,10 +19,10 @@ const Login = ({ classes, setNewUser }) => {
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (event, tokenAuth, client) => {
-    event.preventDefault()
-    const respawnse = await tokenAuth();
-    localStorage.setItem('authToken', respawnse.data.tokenAuth.token);
-    client.writeData({ data: {isLoggedIn: true }  })
+    event.preventDefault();
+    const res = await tokenAuth();
+    localStorage.setItem('authToken', res.data.tokenAuth.token);
+    client.writeData({ data: {isLoggedIn: true }  });
   };
 
   return (
@@ -31,9 +31,7 @@ const Login = ({ classes, setNewUser }) => {
         <Avatar className={classes.avatar}>
           <Lock />
         </Avatar>
-        <Typography variant="title">
-          Login as Existing User
-        </Typography>
+        <Typography variant="title">Login as Existing User</Typography>
 
         <Mutation 
         mutation= {LOGIN_MUTATION}
