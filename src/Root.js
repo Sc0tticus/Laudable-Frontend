@@ -15,11 +15,12 @@ const Root = () => (
     {({ data, loading, error }) => {
       if (loading) return <div>Loading</div>
       if (error) return <div>Error</div>
+      const currentUser = data.me
 
       return (
         <Router>
           <>
-          <Header />
+          <Header currentUser={currentUser} />
           <Switch>
             <Route exact path = "/" component={App} />
             <Route path="/profile/:id" component={Profile}/>
