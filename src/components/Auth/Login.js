@@ -34,38 +34,47 @@ const Login = ({ classes, setNewUser }) => {
         <Typography variant="title">Login as Existing User</Typography>
 
         <Mutation 
-        mutation= {LOGIN_MUTATION}
-        variables = {{ username, password }}
-        >
+        mutation= {LOGIN_MUTATION} variables = {{ username, password }}>
           {(tokenAuth, { loading, error, called, client }) => {
             return (
-              <form onSubmit={event => handleSubmit(event, tokenAuth)} className={classes.form}>
+              <form 
+              onSubmit={event => handleSubmit(event, tokenAuth, client)} 
+              className={classes.form}
+              >
                 <FormControl margin="normal" required fullWidth>
                   <InputLabel htmlFor="username">Username</InputLabel>
-                  <Input id="username" onChange={event => setUsername(event.target.value)}/>
+                  <Input 
+                    id="username" 
+                    onChange={event => setUsername(event.target.value)}
+                    />
                 </FormControl>
 
                 <FormControl margin="normal" required fullWidth>
                   <InputLabel htmlFor="password">Password</InputLabel>
-                  <Input id="password"  type="password" onChange={event => setPassword(event.target.value)}/>
+                  <Input 
+                  id="password"  
+                  type="password" 
+                  onChange={event => setPassword(event.target.value)}/>
                 </FormControl>
 
                 <Button 
                 type="submit" 
                 fullWidth 
                 variant="contained" 
-                color="secondary"
+                color="primary"
                 disabled={
                   loading || 
                   !username.trim() || 
                   !password.trim() 
                   } 
-                className={classes.submit}>
+                className={classes.submit}
+                >
                   {loading ? "Logging in..." : "Login"}
                 </Button>
 
-                <Button onClick={() => setNewUser(true)} 
-                color="primary" 
+                <Button 
+                nClick={() => setNewUser(true)} 
+                color="secondary" 
                 variant="outlined" 
                 fullWidth
                 >
@@ -85,11 +94,12 @@ const Login = ({ classes, setNewUser }) => {
 };
 
 const LOGIN_MUTATION = gql`
-mutation ($username:String!, $password: String!){
+mutation ($username: String!, $password: String!){
   tokenAuth(username: $username, password: $password){
     token
   }
-}`
+}
+`;
 
 
 
