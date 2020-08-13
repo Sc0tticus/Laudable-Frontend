@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useRef } from "react";
 import { ApolloConsumer } from 'react-apollo'
 import { gql } from 'apollo-boost'
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -8,41 +8,51 @@ import Paper from "@material-ui/core/Paper";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 
-const SearchTracks = ({ classes }) => {
+const SearchTracks = ({ classes, setSearchResults }) => {
   const [search, setSearch] = useState(""); 
+  const inputElement = useRef()
+
+  const clearSearchInput = () => {
+    setSearchResults([])
+    setSearch("")
+    inputElement.current.focus();
+  };
+
 
   const handleSubmit = async (event, client) => {
     event.preventDefault();
-    const respawnse = await client.query({
+    const results = await client.query({
       query: SEARCH_TRACKS_QUERY,
       variables: { search }
     });
-    console.log({ respawnse    })
+    setSearchResults(results.data.tracks)
   };
 
   return(
     <ApolloConsumer>
-    {client => (  
-  <form onSubmit={event => handleSubmit(event, client)}>
-    <Paper className={classes.root} elevation={1}>
-      <IconButton type="submit">
-        <ClearIcon />
-      </IconButton>
-        <TextField 
-          fullWidth 
-          placeholder='Search All Tracks'
-          InputProps={{
-            disableUnderline: true
-          }} 
-          onChange={event => setSearch(event.target.value)}
-          />
-      <IconButton>
-        <SearchIcon />
-      </IconButton>
-    </Paper>
-  </form>
-  )}
-  </ApolloConsumer>
+      {client => (  
+        <form onSubmit={event => handleSubmit(event, client)}>
+          <Paper className={classes.root} elevation={1}>
+            <IconButton onClick={clearSearchInput}>
+              <ClearIcon />
+            </IconButton>
+              <TextField 
+                fullWidth 
+                placeholder='Search All Tracks'
+                InputProps={{
+                  disableUnderline: true
+                }} 
+                onChange={event => setSearch(event.target.value)}
+                value={search}
+                inputRef={inputElement}
+                />
+            <IconButton>
+              <SearchIcon />
+            </IconButton>
+          </Paper>
+      </form>
+      )}
+    </ApolloConsumer>
   );
 };
 

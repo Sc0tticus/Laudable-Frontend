@@ -9,19 +9,23 @@ import CreateTrack from '../components/Track/CreateTrack';
 import Loading from '../components/Shared/Loading';
 import Error from '../components/Shared/Error'
 
-
-
 const App = ({ classes }) => {
+  const [searchResults, setSearchResults] = useState([])
+
+
+
   return (
     <div className={classes.container}>
-      <SearchTracks />
+      <SearchTracks setSearchResults={setSearchResults}/>
       <CreateTrack />
       <Query query={GET_TRACKS_QUERY}>
         {({data, loading, error }) => {
           if (loading) return <Loading />
           if (error) return <Error error={error} />
+          const tracks = searchResults.length > 0 ? searchResults : 
+          data.tracks;
 
-          return <TrackList tracks={data.tracks} />
+          return <TrackList tracks={tracks} />
         }}
       </Query>
     </div>
