@@ -5,6 +5,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import RadioIcon from "@material-ui/icons/RadioTwoTone";
 import FaceIcon from "@material-ui/icons/FaceTwoTone";
 import Typography from "@material-ui/core/Typography";
+import SchoolIcon from '@material-ui/icons/School';
+import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
 
 import Signout from '../Auth/Signout'
 
@@ -16,7 +18,8 @@ const Header = ({ classes, currentUser }) => {
       <Toolbar>
         {/* Title / Logo */}
         <Link to="/" className={classes.grow}>
-          <RadioIcon className={classes.logo} color='secondary' />
+          {/* <RadioIcon className={classes.logo} color='secondary' /> */}
+          <SchoolIcon className={classes.logo} color='secondary' />
           <Typography variant="headline" color="secondary" noWrap >
             Laudible
           </Typography>
@@ -25,7 +28,8 @@ const Header = ({ classes, currentUser }) => {
       {/* { Auth User Info }   */}
       {currentUser && (
         <Link to={`/profile/${currentUser.id}`} className={classes.grow}>
-          <FaceIcon className={classes.FaceIcon} />
+          {/* <FaceIcon className={classes.FaceIcon} /> */}
+          <SentimentVerySatisfiedIcon className={classes.SentimentVerySatisfiedIcon} />
           <Typography variant="headline" className={classes.username} noWrap>
             {currentUser.username}
           </Typography>
@@ -55,10 +59,15 @@ const styles = theme => ({
     marginRight: theme.spacing.unit,
     fontSize: 45
   },
-  faceIcon: {
+  // faceIcon: {
+  //   marginRight: theme.spacing.unit,
+  //   fontSize: 30,
+  //   color: "white"
+  // },
+  SentimentVerySatisfiedIcon: {
     marginRight: theme.spacing.unit,
     fontSize: 30,
-    color: "white"
+    color: "orange"
   },
   username: {
     color: "white",
