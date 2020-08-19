@@ -9,7 +9,7 @@ import Auth from './components/Auth'
 
 const client = new ApolloClient({
   // uri: 'http://localhost:8000/graphql/',
-  uri: 'https://laudible-tech.herokuapp.com/graphql/',
+  uri: 'https://laudable-tech.herokuapp.com/graphql/',
   fetchOptions: {
     credentials: "include"
   },
