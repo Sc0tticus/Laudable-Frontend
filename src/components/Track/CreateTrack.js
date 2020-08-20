@@ -47,7 +47,7 @@ const CreateTrack = ({ classes }) => {
     const data = new FormData()
     data.append('file', file)
     data.append('resource_type', 'raw')
-    data.append('upload_preset', 'Laudible')
+    data.append('upload_preset', 'Laudable')
     data.append('cloud_name', 'scotticus')
     const respawnse = await axios.post('https://api.cloudinary.com/v1_1/scotticus/raw/upload', data)
     return respawnse.data.url

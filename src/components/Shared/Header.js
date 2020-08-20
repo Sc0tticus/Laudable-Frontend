@@ -21,7 +21,7 @@ const Header = ({ classes, currentUser }) => {
           {/* <RadioIcon className={classes.logo} color='secondary' /> */}
           <SchoolIcon className={classes.logo} color='secondary' />
           <Typography variant="headline" color="secondary" noWrap >
-            Laudible
+            Laudable
           </Typography>
         </Link>
 
