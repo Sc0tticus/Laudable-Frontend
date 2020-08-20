@@ -29,6 +29,11 @@ This API endpoint allows users to like audio files of their choosing. Liked audi
 Search Audio Files:
 This API endpoint allows users to search for audio files uploaded to https://laudable.tech/.
 
+*Demonstration Video*
+
+https://www.youtube.com/watch?v=y4oTaBYJs8w&feature=youtu.be
+
+
 *Challenges*
 
 This is my second time building a projet with React and figuring out how to manage state with Apollo Client had a steep learning curve and proved to be very challenging.
